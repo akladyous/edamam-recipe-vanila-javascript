@@ -1,6 +1,9 @@
-// https://developer.edamam.com/recipe-search-api-v2-changelog
-// https://developer.edamam.com/food-database-api-docs
-// https://www.edamam.com/results/recipe/?recipe=pasta-alla-gricia-recipe-20022d91be0968092a8eab1aceee81be/search=pasta
+
+function removeAllChilds(){
+    while(this.firstChild){
+        this.removeChild(this.lastChild)
+    }
+}
 
 function endPoint(query=null, path=null){
     const origin = 'https://api.edamam.com'
@@ -38,30 +41,38 @@ const restFormBttn = document.querySelector('#reset-bttn');
 restFormBttn.addEventListener('click', () => {
     form.reset();
     main.classList.remove('active');
-    main.remove()
 });
 
 
 form.addEventListener('submit', (env)=>{
     env.preventDefault();
     const query = document.querySelector('#search-input')
-    if(!query.value){
-        form.reset();
-    } else {
-        if(searchValue !== query.value){
-            let data = request(endPoint(query.value));
-            data.then( data => {
-                lista = data
-                generateRecipeList(data.hits);
-                main.classList.add('active')
-                searchValue = query.value;
-            });
-        };
-    };
+    if(formValidation(query.value)){
+        let data = request(endPoint(query.value));
+        data.then( data => {
+            lista = data
+            generateRecipeList(data.hits);
+            main.classList.add('active')
+            searchValue = query.value;
+        });
+    }
 });
+
+function formValidation(query){
+    if(query){
+        if(query !== searchValue){
+            return true
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    };
+}
 
 function generateRecipeList(result){
     const recipeLists = document.querySelector('.recipe-lists')
+    removeAllChilds.call(recipeLists);
     const recipeItems = document.createElement('div')
     recipeItems.className = "recipe-list"
 
@@ -127,8 +138,7 @@ function generateRecipe(data){
     console.log(data)
     const recipe = document.querySelector('.recipe');
     
-    while(recipe.firstElementChild){
-    recipe.removeChild(recipe.lastElementChild)}
+    removeAllChilds.call(recipe)
 
     const section1 = document.createElement('div')
     section1.classList.add('container', 'section-1')
@@ -261,12 +271,14 @@ function generateRecipe(data){
     section2.appendChild(ingredientsDiv);
     section2.appendChild(nutritionDiv);
 
+
     // const section3 = document.createElement('div');
     // section3.classList.add('container', 'section-3');
 
     //     const feedBack = document.createElement('div');
     //     feedBack.className = "feedback";
     // section3.appendChild(feedBack);
+
 
     recipe.appendChild(section1);
     recipe.appendChild(section2);

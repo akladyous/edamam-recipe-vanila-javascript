@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- google icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Source+Code+Pro:wght@200&family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="stylesheet" href="./styles/search-bar.css">
+    
+    <script defer src="./src/json2html.js"></script>
+    <script defer src="./src/script.js"></script>
+    <title>Recipe App</title>
+</head>
+<body>
+    <header>
+        <nav class="nav-bar">
+            <div class="nav-bar app">
+                <label>Recipe App</label>
+            </div>
+            <ul class="nav-bar links">
+                <li><a href="#">Recipe</a></li>
+                <li><a href="#">Nutrition</a></li>
+                <li><a href="#">Food</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="search-container">
+        <form id="search-form">
+            <div class="search-bar">
+                <input id="search-input" type="text" placeholder="Search..">
+                <span id="reset-bttn" class="material-icons">close</span>
+                <span id="searn-bttn" class="material-icons">search</span>
+            </div>
+            <div class="search-form">
+                <input class="search-btn" type="submit" value="Search">
+            </div>
+        </form>
+    </div>
+
+    <div id="main">
+            <div class="recipe"></div>
+            <div class="recipe-lists"></div>
+    </div>
+</body>
+</html>

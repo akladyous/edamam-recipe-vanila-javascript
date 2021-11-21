@@ -1,4 +1,5 @@
 
+
 function removeAllChilds(){
     while(this.firstChild){
         this.removeChild(this.lastChild)
@@ -14,8 +15,8 @@ function endPoint(query=null, path=null){
     
     const url = new URL(origin);
     url.pathname = urlPath;
-    url.searchParams.append('app_id', '088717c1');
-    url.searchParams.append('app_key', '2627cb5660ca36e2f0bfd72b2437768e');
+    url.searchParams.append('app_id', 'your app id');
+    url.searchParams.append('app_key', 'your app key');
     url.searchParams.append('type', 'public');
     if(query !== null){
         url.searchParams.append('q', query)
